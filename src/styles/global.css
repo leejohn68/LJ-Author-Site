@@ -1711,3 +1711,88 @@ h4 { font-size: 1.25rem; }
     font-size: 0.8125rem;
   }
 }
+
+
+
+/* ──────────────────────────────────────────────
+   Ashveil House — Storm and Lantern theme
+   Homepage hero, header, footer, newsletter banner
+   ────────────────────────────────────────────── */
+
+/* Header bar — dark with cream text */
+body > header.container {
+  background: #23303C;
+}
+
+body > header.container .site-header .logo {
+  color: #F1E8D5;
+}
+
+body > header.container .site-header nav a {
+  color: #CBC8BE;
+}
+
+body > header.container .site-header nav a:hover {
+  color: #E0A458;
+}
+
+/* Hero section — dark stormy background, cream and amber text */
+body > main .hero {
+  background: #23303C;
+  border-bottom: none;
+}
+
+body > main .hero h1 {
+  color: #F1E8D5;
+}
+
+body > main .hero .tagline {
+  color: #E0A458;
+}
+
+body > main .hero .mission {
+  color: #CBC8BE;
+}
+
+/* Newsletter banner at bottom of homepage */
+body > main .newsletter-banner {
+  background: #23303C;
+}
+
+body > main .newsletter-banner h2 {
+  color: #F1E8D5;
+}
+
+body > main .newsletter-banner p {
+  color: #CBC8BE;
+}
+
+body > main .newsletter-banner .btn-primary {
+  background: #E0A458;
+  color: #23303C;
+}
+
+body > main .newsletter-banner .btn-primary:hover {
+  background: #F1E8D5;
+  color: #23303C;
+}
+
+/* Footer — match the dark palette */
+body > footer.site-footer {
+  background: #23303C;
+  border-top: none;
+  color: #CBC8BE;
+}
+
+body > footer.site-footer .footer-inner,
+body > footer.site-footer p {
+  color: #CBC8BE;
+}
+
+body > footer.site-footer .footer-links a {
+  color: #CBC8BE;
+}
+
+body > footer.site-footer .footer-links a:hover {
+  color: #E0A458;
+}
