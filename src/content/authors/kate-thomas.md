@@ -1,10 +1,10 @@
 ---
 name: Kate Thomas
 slug: kate-thomas
-bio: "Kate Thomas writes sharp, twisting thrillers that keep you turning pages long past midnight. Her books are full of dark secrets, unreliable narrators, and endings you never see coming."
+bio: "Kate Thomas writes Nordic Noir set in long winters and small towns where everyone knows your name and nobody tells the truth. Cold landscapes, colder secrets, and the slow inevitability of a story you can't look away from."
 photo: "/images/authors/kate-thomas/kate-thomas.png"
 genres:
-  - Thriller
+  - Nordic Noir
 socialLinks:
   instagram: "https://instagram.com/katethomas"
   tiktok: "https://tiktok.com/@katethomas"
