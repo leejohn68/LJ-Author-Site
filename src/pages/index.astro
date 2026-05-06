@@ -2,14 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+// Only these author slugs will show on the homepage.
+// Add more slugs to this list as you create real pen names.
+const visibleAuthorSlugs = ['maisie-starling'];
+
 const allAuthors = await getCollection('authors');
 const allBooks = await getCollection('books');
 
-const featuredBooks = allBooks.filter(b => b.data.featured);
-const genres = [...new Set(allBooks.map(b => b.data.genre))].sort();
+// Filter to only the authors we want to show
+const visibleAuthors = allAuthors.filter(a => visibleAuthorSlugs.includes(a.data.slug));
+const visibleBooks = allBooks.filter(b => visibleAuthorSlugs.includes(b.data.authorSlug));
+
+const featuredBooks = visibleBooks.filter(b => b.data.featured);
+const genres = [...new Set(visibleBooks.map(b => b.data.genre))].sort();
 
 // Build a lookup for author names
-const authorMap = Object.fromEntries(allAuthors.map(a => [a.data.slug, a.data]));
+const authorMap = Object.fromEntries(visibleAuthors.map(a => [a.data.slug, a.data]));
 ---
 
 <BaseLayout title="Ashveil House | Atmospheric Fiction">
@@ -35,7 +43,7 @@ const authorMap = Object.fromEntries(allAuthors.map(a => [a.data.slug, a.data]))
         <h2>Featured Authors</h2>
       </div>
       <div class="author-grid">
-        {allAuthors.map(author => (
+        {visibleAuthors.map(author => (
           <a href={`/authors/${author.data.slug}/`} class="card author-card" style="text-decoration:none; color:inherit;">
             <img
               src={author.data.photo}
@@ -72,14 +80,14 @@ const authorMap = Object.fromEntries(allAuthors.map(a => [a.data.slug, a.data]))
       <!-- Author filters -->
       <div class="filter-bar" id="author-filters">
         <button class="tag active" data-author="all">All Authors</button>
-        {allAuthors.map(author => (
+        {visibleAuthors.map(author => (
           <button class="tag" data-author={author.data.slug}>{author.data.name}</button>
         ))}
       </div>
 
       <!-- Book grid -->
       <div class="book-grid" id="book-grid">
-        {allBooks
+        {visibleBooks
           .sort((a, b) => new Date(b.data.releaseDate).getTime() - new Date(a.data.releaseDate).getTime())
           .map(book => {
             const author = authorMap[book.data.authorSlug];
