@@ -1719,9 +1719,17 @@ h4 { font-size: 1.25rem; }
    Homepage hero, header, footer, newsletter banner
    ────────────────────────────────────────────── */
 
-/* Header bar — dark with cream text */
+/* Header bar — dark with cream text, extending full-width */
 body > header.container {
+  max-width: 100% !important;
+  padding: 0 !important;
   background: #23303C;
+}
+
+body > header.container .site-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
 }
 
 body > header.container .site-header .logo {
@@ -1734,6 +1742,7 @@ body > header.container .site-header nav a {
 
 body > header.container .site-header nav a:hover {
   color: #E0A458;
+}
 }
 
 /* Hero section — dark stormy background, cream and amber text */
