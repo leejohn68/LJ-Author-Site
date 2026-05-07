@@ -1743,7 +1743,19 @@ body > header.container .site-header nav a {
 body > header.container .site-header nav a:hover {
   color: #E0A458;
 }
+/* Hero section — dark stormy background, cream and amber text */
+body > main .hero {
+  background: #23303C;
+  border-bottom: none;
+}
 
+body > main .hero h1 {
+  color: #F1E8D5;
+}
+
+body > main .hero .tagline {
+  color: #E0A458;
+}
 body > main .hero .mission {
   color: #CBC8BE;
 }
