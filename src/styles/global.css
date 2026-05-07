@@ -1804,11 +1804,32 @@ body > footer.site-footer .footer-links a:hover {
 }
 
 
+/* ──────────────────────────────────────────────
+   Storm and Lantern — Homepage button accents
+   ────────────────────────────────────────────── */
 
-/* Buy Now button on the homepage — Storm and Lantern */
+/* Active filter pills (genre + author) — lifted storm blue */
+body > main .filter-bar .tag.active {
+  background: #3D5363;
+  color: #F1E8D5;
+  border-color: #3D5363;
+}
+
+body > main .filter-bar .tag:hover {
+  background: #3D5363;
+  color: #F1E8D5;
+  border-color: #3D5363;
+}
+
+/* Buy Now button on book cards — lifted storm blue */
 body > main .book-card .btn-dark {
-  background: #E0A458;
-  color: #23303C;
+  background: #3D5363;
+  color: #F1E8D5;
+}
+
+body > main .book-card .btn-dark:hover {
+  background: #4A6478;
+  color: #F1E8D5;
 }
 
 body > main .book-card .btn-dark:hover {
