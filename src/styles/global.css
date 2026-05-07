@@ -1802,3 +1802,16 @@ body > footer.site-footer .footer-links a {
 body > footer.site-footer .footer-links a:hover {
   color: #E0A458;
 }
+
+
+
+/* Buy Now button on the homepage — Storm and Lantern */
+body > main .book-card .btn-dark {
+  background: #E0A458;
+  color: #23303C;
+}
+
+body > main .book-card .btn-dark:hover {
+  background: #F1E8D5;
+  color: #23303C;
+}
