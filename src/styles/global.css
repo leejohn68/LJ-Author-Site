@@ -1836,3 +1836,21 @@ body > main .book-card .btn-dark:hover {
   background: #F1E8D5;
   color: #23303C;
 }
+
+
+/* Logo image in the header */
+body > header.container .site-header .logo img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+
+body > header.container .site-header .logo {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+body > header.container .site-header .logo:has(img) {
+  font-size: 0;
+}
