@@ -17,9 +17,5 @@ freeBook:
   cover: "/images/placeholder.png"
   blurb: "Placeholder for Maisie Starling's reader magnet."
   link: "https://bookfunnel.com/PLACEHOLDER"
-comingSoon:
-  title: "Coming Soon"
-  cover: "/images/placeholder.png"
-  blurb: "The first Maisie Starling paranormal cozy mystery is on its way."
-  preorderLink: ""
+
 ---
