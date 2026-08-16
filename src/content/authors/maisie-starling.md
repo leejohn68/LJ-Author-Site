@@ -1,9 +1,10 @@
 ---
 name: Maisie Starling
 slug: maisie-starling
-bio: "Maisie Starling writes paranormal cozy mysteries set in small towns where the neighbors are nosy, secrets hide behind picket fences, and magic turns up where you'd least expect it. She quilts, embroiders, and writes with a black-and-white cat named Dumpling on her lap, who insists on being part of every project."
+bio: "Maisie Starling writes cozy mysteries you solve with a pencil — puzzle casebooks where every clue is true and fifty thousand suspects wait to be crossed out — alongside paranormal cozy mysteries set in small towns where the neighbors are nosy and magic turns up where you'd least expect it. She quilts, embroiders, and writes with a black-and-white cat named Dumpling on her lap, who insists on being part of every project."
 photo: "/images/authors/maisie-starling/maisie-starling.jpg"
 genres:
+  - Puzzle Casebooks
   - Cozy Mystery
 socialLinks:
   instagram: ""

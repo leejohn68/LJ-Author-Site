@@ -16,7 +16,7 @@ const remainingBooks = books.slice(2);
 const social = author.socialLinks ?? {};
 ---
 
-<AuthorLandingLayout title={`${author.name} | Cozy Mystery Author`} description={`Books by ${author.name}. Small towns. Quiet magic. Mysteries best read with a quilt and a cat.`} authorName={author.name}>
+<AuthorLandingLayout title={`${author.name} | Cozy Mystery Author`} description={`Books by ${author.name}. Puzzle casebooks and cozy mysteries from Willow Creek: every clue true, every culprit yours to name.`} authorName={author.name}>
 
   <!-- HERO: Book Carousel -->
   <section class="bm-hero" id="books">
@@ -26,7 +26,7 @@ const social = author.socialLinks ?? {};
           <div class="bm-hero-inner container">
             <div class="bm-hero-text">
               <h1 class="bm-hero-title">{book.data.title}</h1>
-              <p class="bm-hero-tagline">Small towns. Quiet magic. Mysteries best read with a quilt and a cat.</p>
+              <p class="bm-hero-tagline">Cozy mysteries you solve with a pencil.</p>
               <p class="bm-hero-blurb">{book.data.blurb}</p>
               <a href={book.data.buyLinks?.amazon ?? 'https://www.amazon.com'} class="bm-hero-btn" target="_blank" rel="noopener">
                 Start Reading
@@ -193,11 +193,11 @@ const social = author.socialLinks ?? {};
 </AuthorLandingLayout>
 
 <style>
-  /* ── Maisie Starling — Autumn Dusk Theme ── */
+  /* ── Maisie Starling — Willow Creek Navy Theme ── */
 
   /* Hero */
   :global(.bm-hero) {
-    background: linear-gradient(135deg, #3D2840 0%, #2A1E2C 60%, #1F1A22 100%);
+    background: linear-gradient(135deg, #1A3B72 0%, #102A56 60%, #0B1E3E 100%);
     padding: 3rem 0;
     overflow: hidden;
     position: relative;
@@ -226,7 +226,7 @@ const social = author.socialLinks ?? {};
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background: rgba(217, 145, 74, 0.3);
+    background: rgba(242, 165, 23, 0.3);
     border: 1px solid rgba(245, 233, 211, 0.25);
     border-radius: 50%;
     width: 48px;
@@ -240,8 +240,8 @@ const social = author.socialLinks ?? {};
   }
 
   :global(.bm-hero-arrow):hover {
-    background: #D9914A;
-    border-color: #D9914A;
+    background: #F2A517;
+    border-color: #F2A517;
   }
 
   :global(.bm-hero-arrow) svg {
@@ -280,8 +280,8 @@ const social = author.socialLinks ?? {};
 
   :global(.bm-hero-dot.active),
   :global(.bm-hero-dot):hover {
-    background: #D9914A;
-    border-color: #D9914A;
+    background: #F2A517;
+    border-color: #F2A517;
   }
 
   :global(.bm-hero-inner) {
@@ -309,7 +309,7 @@ const social = author.socialLinks ?? {};
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #D9914A;
+    color: #F2A517;
     margin-bottom: 1.25rem;
   }
 
@@ -329,8 +329,8 @@ const social = author.socialLinks ?? {};
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #2A1E2C;
-    background: #D9914A;
+    color: #102A56;
+    background: #F2A517;
     border: none;
     border-radius: 4px;
     transition: background 0.2s, transform 0.2s;
@@ -338,7 +338,7 @@ const social = author.socialLinks ?? {};
 
   :global(.bm-hero-btn):hover {
     background: #F5E9D3;
-    color: #3D2840;
+    color: #102A56;
     transform: translateY(-2px);
   }
 
@@ -356,7 +356,7 @@ const social = author.socialLinks ?? {};
 
   /* Opt-in bar */
   :global(.bm-optin-bar) {
-    background: #2A1E2C;
+    background: #0B1E3E;
     padding: 1.5rem 0;
   }
 
@@ -376,8 +376,8 @@ const social = author.socialLinks ?? {};
 
   :global(.bm-optin-bar) .al-optin-form input[type="text"],
   :global(.bm-optin-bar) .al-optin-form input[type="email"] {
-    background: rgba(217, 145, 74, 0.12);
-    border-color: #D9914A;
+    background: rgba(242, 165, 23, 0.12);
+    border-color: #F2A517;
     color: #F5E9D3;
   }
 
@@ -390,20 +390,20 @@ const social = author.socialLinks ?? {};
   }
 
   :global(.bm-highlight) {
-    background: linear-gradient(to top, rgba(217, 145, 74, 0.35) 40%, transparent 40%);
+    background: linear-gradient(to top, rgba(242, 165, 23, 0.35) 40%, transparent 40%);
     color: inherit;
     padding: 0 4px;
   }
 
   :global(.bm-optin-bar) .al-btn-dark {
-    background: #D9914A;
-    border-color: #D9914A;
-    color: #2A1E2C !important;
+    background: #F2A517;
+    border-color: #F2A517;
+    color: #102A56 !important;
   }
 
   :global(.bm-optin-bar) .al-btn-dark:hover {
     background: #F5E9D3;
-    color: #3D2840 !important;
+    color: #102A56 !important;
   }
 
   /* Profile photo */
@@ -412,42 +412,42 @@ const social = author.socialLinks ?? {};
     border-radius: 8px;
   }
 
-  /* Warm autumn accent overrides */
+  /* Warm accent overrides */
   :global(.al-section) .btn-primary {
-    background: #3D2840;
+    background: #102A56;
     color: #F5E9D3;
   }
   :global(.al-section) .btn-primary:hover {
     background: #F5E9D3;
-    color: #3D2840;
-    border: 1px solid #3D2840;
+    color: #102A56;
+    border: 1px solid #102A56;
   }
 
   :global(.al-section) .btn-outline {
-    border-color: #3D2840;
-    color: #3D2840;
+    border-color: #102A56;
+    color: #102A56;
   }
   :global(.al-section) .btn-outline:hover {
-    background: #3D2840;
+    background: #102A56;
     color: #F5E9D3;
   }
 
   :global(.al-section) .tag:hover,
   :global(.al-section) .tag.active {
-    background: #3D2840;
-    border-color: #3D2840;
+    background: #102A56;
+    border-color: #102A56;
     color: #F5E9D3;
   }
 
   :global(.al-section) .section-title span {
-    color: #3D2840;
+    color: #102A56;
   }
 
   :global(.al-section) a {
-    color: #3D2840;
+    color: #102A56;
   }
   :global(.al-section) a:hover {
-    color: #5A3F5E;
+    color: #1A3B72;
   }
 
   /* Pre-order Banner */
@@ -508,7 +508,7 @@ const social = author.socialLinks ?? {};
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #D9914A;
+    color: #F2A517;
     margin-bottom: 1rem;
   }
 
@@ -537,8 +537,8 @@ const social = author.socialLinks ?? {};
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-decoration: none;
-    color: #2A1E2C;
-    background: #D9914A;
+    color: #102A56;
+    background: #F2A517;
     border: none;
     border-radius: 4px;
     transition: background 0.2s, transform 0.2s;
@@ -546,7 +546,7 @@ const social = author.socialLinks ?? {};
 
   :global(.al-preorder-btn):hover {
     background: #F5E9D3;
-    color: #3D2840 !important;
+    color: #102A56 !important;
     transform: translateY(-2px);
   }
 
@@ -586,7 +586,7 @@ const social = author.socialLinks ?? {};
   }
 
   :global(.al-release-card) .release-info h3 mark {
-    background: linear-gradient(to top, rgba(217, 145, 74, 0.4) 40%, transparent 40%);
+    background: linear-gradient(to top, rgba(242, 165, 23, 0.4) 40%, transparent 40%);
     color: inherit;
     padding: 0 4px;
   }
@@ -619,7 +619,7 @@ const social = author.socialLinks ?? {};
     bottom: 2px;
     width: 100%;
     height: 8px;
-    background: rgba(217, 145, 74, 0.4);
+    background: rgba(242, 165, 23, 0.4);
     z-index: -1;
   }
 
@@ -630,14 +630,14 @@ const social = author.socialLinks ?? {};
 
   /* Scroll-to-top */
   :global(.al-scroll-top) {
-    background: #3D2840 !important;
-    border-color: #3D2840 !important;
+    background: #102A56 !important;
+    border-color: #102A56 !important;
     color: #F5E9D3 !important;
   }
   :global(.al-scroll-top):hover {
-    background: #D9914A !important;
-    border-color: #D9914A !important;
-    color: #2A1E2C !important;
+    background: #F2A517 !important;
+    border-color: #F2A517 !important;
+    color: #102A56 !important;
   }
 
   /* Bottom Newsletter */
