@@ -59,17 +59,15 @@ const social = author.socialLinks ?? {};
     <div class="container">
       <div class="al-optin" id="newsletter">
         <div class="al-optin-text">
-          <h2><mark class="bm-highlight">Get a Free Book from {author.name}</mark></h2>
-          <p>Join the mailing list for exclusive content, new release alerts, and a free cozy mystery.</p>
+          <h2><mark class="bm-highlight">Get a Free Case File from {author.name}</mark></h2>
+          <p>{author.freeBook?.blurb ?? 'Join the mailing list for exclusive content, new release alerts, and a free cozy mystery.'}</p>
         </div>
-        <div class="al-optin-form-wrap">
-          <form class="al-optin-form" data-action={author.newsletterFormAction ?? '#'}>
-            <input type="text" name="fields[name]" placeholder="First name" autocomplete="given-name" />
-            <input type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
-            <button type="submit" class="btn al-btn-dark" style="white-space:nowrap;">Subscribe</button>
-          </form>
-          <p class="al-optin-success" style="display:none;">Thank you! Check your inbox.</p>
-          <p class="al-optin-privacy">Your information is safe. Unsubscribe anytime.</p>
+        <div class="al-optin-form-wrap" style="display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+          {author.freeBook && (
+            <img src={author.freeBook.cover} alt={author.freeBook.title} style="width:150px; border-radius:4px; box-shadow:0 6px 20px rgba(0,0,0,0.35);" loading="lazy" />
+          )}
+          <a href={author.freeBook?.link ?? '#'} class="btn al-btn-dark" style="white-space:nowrap;">Get the Free Case File</a>
+          <p class="al-optin-privacy">Instant delivery. Unsubscribe anytime.</p>
         </div>
       </div>
     </div>
@@ -187,13 +185,8 @@ const social = author.socialLinks ?? {};
     <div class="container">
       <h2 class="al-bottom-nl-heading">Never Miss a New Release</h2>
       <p class="al-bottom-nl-desc">Join {author.name}'s mailing list for exclusive content, early cover reveals, and new release alerts delivered straight to your inbox.</p>
-      <form class="al-bottom-nl-form" data-action={author.newsletterFormAction ?? '#'}>
-        <input type="text" name="fields[name]" placeholder="Your first name" autocomplete="given-name" />
-        <input type="email" name="fields[email]" placeholder="Your email address" autocomplete="email" required />
-        <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Subscribe</button>
-      </form>
-      <p class="al-bottom-nl-success" style="display:none;">Thank you! Check your inbox.</p>
-      <p class="al-bottom-nl-privacy">Your information is safe. Unsubscribe anytime.</p>
+      <a href={author.freeBook?.link ?? '#'} class="btn btn-primary" style="white-space:nowrap;">Join and Get the Free Case File</a>
+      <p class="al-bottom-nl-privacy">Instant delivery. Unsubscribe anytime.</p>
     </div>
   </section>
 
