@@ -28,9 +28,16 @@ const social = author.socialLinks ?? {};
               <h1 class="bm-hero-title"><a href={`/books/${book.id}/`}>{book.data.title}</a></h1>
               <p class="bm-hero-tagline">Cozy mysteries you solve with a pencil.</p>
               <p class="bm-hero-blurb">{book.data.blurb}</p>
-              <a href={book.data.buyLinks?.amazon ?? 'https://www.amazon.com'} class="bm-hero-btn" target="_blank" rel="noopener">
-                Start Reading
-              </a>
+              <div class="bm-hero-btns">
+                <a href={book.data.buyLinks?.amazon ?? 'https://www.amazon.com'} class="bm-hero-btn" target="_blank" rel="noopener">
+                  Start Reading
+                </a>
+                {book.data.buyLinks?.amazonCa && (
+                  <a href={book.data.buyLinks.amazonCa} class="bm-hero-btn bm-hero-btn--alt" target="_blank" rel="noopener">
+                    Buy on Amazon.ca
+                  </a>
+                )}
+              </div>
             </div>
             <div class="bm-hero-cover">
               <a href={`/books/${book.id}/`}>
@@ -121,6 +128,11 @@ const social = author.socialLinks ?? {};
                     Buy on Amazon
                   </a>
                 )}
+                {book.data.buyLinks?.amazonCa && (
+                  <a href={book.data.buyLinks.amazonCa} class="btn btn-outline buy-ca" target="_blank" rel="noopener">
+                    Buy on Amazon.ca
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -176,6 +188,11 @@ const social = author.socialLinks ?? {};
                 {book.data.buyLinks?.amazon && (
                   <a href={book.data.buyLinks.amazon} class="btn btn-outline book-card-btn" target="_blank" rel="noopener">
                     Read on Amazon
+                  </a>
+                )}
+                {book.data.buyLinks?.amazonCa && (
+                  <a href={book.data.buyLinks.amazonCa} class="btn btn-outline book-card-btn buy-ca" target="_blank" rel="noopener">
+                    Buy on Amazon.ca
                   </a>
                 )}
               </div>
@@ -338,6 +355,25 @@ const social = author.socialLinks ?? {};
     color: #D9CDB5;
     margin-bottom: 2rem;
     max-width: 520px;
+  }
+
+  :global(.bm-hero-btns) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  :global(.bm-hero-btn--alt) {
+    background: transparent !important;
+    color: #F5E9D3 !important;
+    border: 1px solid #F5E9D3 !important;
+    padding: 1rem 2rem !important;
+  }
+
+  :global(.bm-hero-btn--alt):hover {
+    background: #F5E9D3 !important;
+    color: #102A56 !important;
   }
 
   :global(.bm-hero-btn) {

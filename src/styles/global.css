@@ -1871,3 +1871,15 @@ body > header.container .site-header .logo:has(img) {
 .al-release-card .release-info h3 a:hover {
   text-decoration: underline;
 }
+
+/* Secondary storefront button (Amazon.ca) on book cards */
+.buy-ca {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.1rem;
+}
+
+.book-card .info .buy-ca,
+.al-release-card .release-info .buy-ca {
+  display: inline-block;
+}
