@@ -7,6 +7,6 @@ blurb: "Five cold cases. Fifty thousand suspects. One pattern hiding in plain si
 releaseDate: "2026-08-16"
 buyLinks:
   amazon: "https://www.ashveilhouse.com/grid"
-  amazonCa: "https://www.amazon.ca/dp/B0HF6KC4GL"
+  amazonCa: "https://www.ashveilhouse.com/grid-ca"
 featured: true
 ---

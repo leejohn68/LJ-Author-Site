@@ -1877,9 +1877,15 @@ body > header.container .site-header .logo:has(img) {
   margin-top: 0.5rem;
   font-size: 0.85rem;
   padding: 0.6rem 1.1rem;
+  text-align: center;
 }
 
-.book-card .info .buy-ca,
+.book-card .info .buy-ca {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+}
+
 .al-release-card .release-info .buy-ca {
   display: inline-block;
 }
