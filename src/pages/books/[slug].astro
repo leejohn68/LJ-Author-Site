@@ -53,7 +53,12 @@ const released = `${MONTHS[Number(mm) - 1]} ${Number(dd)}, ${yy}`;
 
           <div class="bp-buttons">
             {book.data.buyLinks?.amazon && (
-              <a href={book.data.buyLinks.amazon} class="bp-btn bp-btn--primary" target="_blank" rel="noopener">Buy on Amazon</a>
+              <a href={book.data.buyLinks.amazon} class="bp-btn bp-btn--primary" target="_blank" rel="noopener">
+                {book.data.buyLinks.amazonCa ? 'Buy on Amazon.com' : 'Buy on Amazon'}
+              </a>
+            )}
+            {book.data.buyLinks?.amazonCa && (
+              <a href={book.data.buyLinks.amazonCa} class="bp-btn" target="_blank" rel="noopener">Buy on Amazon.ca</a>
             )}
             {book.data.buyLinks?.barnesAndNoble && (
               <a href={book.data.buyLinks.barnesAndNoble} class="bp-btn" target="_blank" rel="noopener">Barnes &amp; Noble</a>

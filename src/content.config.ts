@@ -47,6 +47,7 @@ const books = defineCollection({
     releaseDate: z.string(),
     buyLinks: z.object({
       amazon: z.string().optional(),
+      amazonCa: z.string().optional(),
       barnesAndNoble: z.string().optional(),
       kobo: z.string().optional(),
       apple: z.string().optional(),
