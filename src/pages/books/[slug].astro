@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  // Only books by these authors get their own page.
+  // Keep this list in step with visibleAuthorSlugs in src/pages/index.astro.
+  const visible = ['maisie-starling'];
+  const allBooks = await getCollection('books');
+  return allBooks
+    .filter(b => visible.includes(b.data.authorSlug))
+    .map(book => ({ params: { slug: book.id }, props: { book } }));
+}
+
+const { book } = Astro.props;
+const allAuthors = await getCollection('authors');
+const allBooks = await getCollection('books');
+
+const author = allAuthors.find(a => a.data.slug === book.data.authorSlug)?.data;
+
+const moreBooks = allBooks
+  .filter(b => b.data.authorSlug === book.data.authorSlug && b.id !== book.id)
+  .sort((a, b) => new Date(b.data.releaseDate).getTime() - new Date(a.data.releaseDate).getTime());
+
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const [yy, mm, dd] = book.data.releaseDate.split('-');
+const released = `${MONTHS[Number(mm) - 1]} ${Number(dd)}, ${yy}`;
+---
+
+<BaseLayout title={`${book.data.title} | ${author?.name ?? 'Ashveil House'}`} description={book.data.blurb.slice(0, 155)}>
+
+  <article class="bp">
+
+    <!-- Book hero -->
+    <section class="bp-hero">
+      <div class="bp-inner">
+
+        <div class="bp-cover">
+          <img src={book.data.cover} alt={book.data.title} />
+        </div>
+
+        <div class="bp-text">
+          <p class="bp-crumb">
+            <a href={`/authors/${book.data.authorSlug}/`}>&larr; All books by {author?.name ?? book.data.authorSlug}</a>
+          </p>
+
+          <span class="bp-genre">{book.data.genre}</span>
+          <h1 class="bp-title">{book.data.title}</h1>
+          <p class="bp-byline">by {author?.name ?? book.data.authorSlug}</p>
+          <p class="bp-date">Released {released}</p>
+
+          <p class="bp-blurb">{book.data.blurb}</p>
+
+          <div class="bp-buttons">
+            {book.data.buyLinks?.amazon && (
+              <a href={book.data.buyLinks.amazon} class="bp-btn bp-btn--primary" target="_blank" rel="noopener">Buy on Amazon</a>
+            )}
+            {book.data.buyLinks?.barnesAndNoble && (
+              <a href={book.data.buyLinks.barnesAndNoble} class="bp-btn" target="_blank" rel="noopener">Barnes &amp; Noble</a>
+            )}
+            {book.data.buyLinks?.kobo && (
+              <a href={book.data.buyLinks.kobo} class="bp-btn" target="_blank" rel="noopener">Kobo</a>
+            )}
+            {book.data.buyLinks?.apple && (
+              <a href={book.data.buyLinks.apple} class="bp-btn" target="_blank" rel="noopener">Apple Books</a>
+            )}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Free case file -->
+    {author?.freeBook && (
+      <section class="bp-free">
+        <div class="bp-inner bp-inner--free">
+          <img class="bp-free-cover" src={author.freeBook.cover} alt={author.freeBook.title} loading="lazy" />
+          <div class="bp-free-text">
+            <h2>Get a Free Case File from {author.name}</h2>
+            <p>{author.freeBook.blurb}</p>
+            <a href={author.freeBook.link} class="bp-btn bp-btn--primary">Get the Free Case File</a>
+            <p class="bp-fineprint">Instant delivery. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- More by this author -->
+    {moreBooks.length > 0 && (
+      <section class="bp-more">
+        <div class="bp-inner bp-inner--col">
+          <h2>More by {author?.name ?? book.data.authorSlug}</h2>
+          <div class="bp-more-grid">
+            {moreBooks.map(b => (
+              <a class="bp-more-card" href={`/books/${b.id}/`}>
+                <img src={b.data.cover} alt={b.data.title} loading="lazy" />
+                <h3>{b.data.title}</h3>
+                <span>{b.data.genre}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+  </article>
+</BaseLayout>
+
+<style>
+  .bp {
+    --bp-navy: #102A56;
+    --bp-navy-deep: #0B1E3E;
+    --bp-cream: #F5E9D3;
+    --bp-muted: #D9CDB5;
+    --bp-marigold: #F2A517;
+  }
+
+  .bp-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .bp-inner--free { grid-template-columns: minmax(0, 180px) minmax(0, 1fr); align-items: center; }
+  .bp-inner--col  { display: block; }
+
+  /* Hero */
+  .bp-hero {
+    background: linear-gradient(135deg, #1A3B72 0%, #102A56 60%, #0B1E3E 100%);
+    color: var(--bp-cream);
+    padding: 4rem 0 4.5rem;
+  }
+
+  .bp-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+  }
+
+  .bp-crumb { margin: 0 0 1.25rem; font-size: 0.9rem; }
+  .bp-crumb a { color: var(--bp-muted); text-decoration: none; }
+  .bp-crumb a:hover { color: var(--bp-marigold); }
+
+  .bp-genre {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--bp-marigold);
+    border-radius: 999px;
+    color: var(--bp-marigold);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .bp-title {
+    margin: 1rem 0 0.4rem;
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    line-height: 1.1;
+    color: var(--bp-cream);
+  }
+
+  .bp-byline { margin: 0 0 0.3rem; font-size: 1.1rem; color: var(--bp-marigold); }
+  .bp-date   { margin: 0 0 1.5rem; font-size: 0.9rem; color: var(--bp-muted); }
+
+  .bp-blurb {
+    margin: 0 0 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--bp-cream);
+    max-width: 58ch;
+  }
+
+  .bp-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .bp-btn {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    border: 1px solid var(--bp-cream);
+    border-radius: 3px;
+    color: var(--bp-cream);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .bp-btn:hover { background: var(--bp-cream); color: var(--bp-navy); }
+
+  .bp-btn--primary {
+    background: var(--bp-marigold);
+    border-color: var(--bp-marigold);
+    color: var(--bp-navy);
+  }
+
+  .bp-btn--primary:hover { background: var(--bp-cream); border-color: var(--bp-cream); color: var(--bp-navy); }
+
+  /* Free case file */
+  .bp-free { background: var(--bp-navy-deep); color: var(--bp-cream); padding: 3.5rem 0; }
+  .bp-free-cover { width: 100%; border-radius: 4px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
+  .bp-free-text h2 { margin: 0 0 0.75rem; color: var(--bp-cream); font-size: 1.6rem; }
+  .bp-free-text p  { margin: 0 0 1.25rem; color: var(--bp-muted); line-height: 1.7; max-width: 60ch; }
+  .bp-fineprint { font-size: 0.82rem; margin: 0.9rem 0 0 !important; }
+
+  /* More by */
+  .bp-more { padding: 3.5rem 0; }
+  .bp-more h2 { margin: 0 0 1.75rem; }
+
+  .bp-more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .bp-more-card { text-decoration: none; color: inherit; display: block; }
+  .bp-more-card img { width: 100%; border-radius: 3px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
+  .bp-more-card h3 { margin: 0.75rem 0 0.2rem; font-size: 1rem; }
+  .bp-more-card span { font-size: 0.8rem; color: var(--color-text-muted, #6B6560); }
+  .bp-more-card:hover h3 { text-decoration: underline; }
+
+  @media (max-width: 820px) {
+    .bp-inner,
+    .bp-inner--free {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      justify-items: center;
+      text-align: center;
+    }
+    .bp-cover { max-width: 260px; }
+    .bp-free-cover { max-width: 160px; }
+    .bp-blurb, .bp-free-text p { max-width: none; }
+    .bp-buttons { justify-content: center; }
+  }
+</style>

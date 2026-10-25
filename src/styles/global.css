@@ -1854,3 +1854,20 @@ body > header.container .site-header .logo {
 body > header.container .site-header .logo:has(img) {
   font-size: 0;
 }
+
+/* Book covers and titles that link through to a book page */
+.book-card .cover-wrap a,
+.al-release-card .cover-wrap a {
+  display: block;
+}
+
+.book-card .info h4 a,
+.al-release-card .release-info h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.book-card .info h4 a:hover,
+.al-release-card .release-info h3 a:hover {
+  text-decoration: underline;
+}
