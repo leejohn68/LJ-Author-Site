@@ -103,7 +103,7 @@ const authorMap = Object.fromEntries(visibleAuthors.map(a => [a.data.slug, a.dat
                   <p class="author-name">{author?.name ?? book.data.authorSlug}</p>
                   <span class="tag genre-tag">{book.data.genre}</span>
                   {book.data.buyLinks?.amazon && (
-                    <a href={book.data.buyLinks.amazon} class="btn btn-dark" target="_blank" rel="noopener">Buy Now</a>
+                    <a href={book.data.buyLinks.amazon} class="btn btn-dark" target="_blank" rel="noopener">Buy on Amazon.com</a>
                   )}
                   {book.data.buyLinks?.amazonCa && (
                     <a href={book.data.buyLinks.amazonCa} class="btn btn-outline buy-ca" target="_blank" rel="noopener">Buy on Amazon.ca</a>

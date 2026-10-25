@@ -30,7 +30,7 @@ const social = author.socialLinks ?? {};
               <p class="bm-hero-blurb">{book.data.blurb}</p>
               <div class="bm-hero-btns">
                 <a href={book.data.buyLinks?.amazon ?? 'https://www.amazon.com'} class="bm-hero-btn" target="_blank" rel="noopener">
-                  Start Reading
+                  Buy on Amazon.com
                 </a>
                 {book.data.buyLinks?.amazonCa && (
                   <a href={book.data.buyLinks.amazonCa} class="bm-hero-btn bm-hero-btn--alt" target="_blank" rel="noopener">
@@ -125,7 +125,7 @@ const social = author.socialLinks ?? {};
                 <p class="blurb">{book.data.blurb}</p>
                 {book.data.buyLinks?.amazon && (
                   <a href={book.data.buyLinks.amazon} class="btn btn-primary" target="_blank" rel="noopener">
-                    Buy on Amazon
+                    Buy on Amazon.com
                   </a>
                 )}
                 {book.data.buyLinks?.amazonCa && (
@@ -187,7 +187,7 @@ const social = author.socialLinks ?? {};
                 </p>
                 {book.data.buyLinks?.amazon && (
                   <a href={book.data.buyLinks.amazon} class="btn btn-outline book-card-btn" target="_blank" rel="noopener">
-                    Read on Amazon
+                    Buy on Amazon.com
                   </a>
                 )}
                 {book.data.buyLinks?.amazonCa && (
